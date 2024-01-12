@@ -36,6 +36,7 @@ class ShoppingList : AppCompatActivity() {
             val aboutIntent = Intent(this, MainActivity::class.java)
             startActivity(aboutIntent)
         }
+        // Si viene del MainActivity las lineas anteriores no nos necesarias. 35 a 38
 
         createProductButton.setOnClickListener {
             mostrarDialogoProducto()
@@ -71,7 +72,7 @@ class ShoppingList : AppCompatActivity() {
         // Agrega botones "Aceptar" y "Cancelar"
         builder.setPositiveButton("Aceptar") { _, _ ->
             val nombre = editTextNombre.text.toString()
-            val precio = editTextPrecio.text.toString().toDoubleOrNull() ?: 0.0
+            val precio = editTextPrecio.text.toString().toIntOrNull() ?: 0
             val cantidad = editTextCantidad.text.toString().toIntOrNull() ?: 0
             val descripcion = editTextDescripcion.text.toString()
             val categoria = spinnerCategoria.selectedItem.toString()
@@ -118,7 +119,8 @@ class ShoppingList : AppCompatActivity() {
         // Actualizar el texto
         val totalTextView = findViewById<TextView>(R.id.text_total_products_number)
         Log.i("total1", "El total es:"+ totalTextView.text)
-        totalTextView.text = getString(R.string.text_total_Pay_number, total)
+        totalTextView.text = total.toString() + "\tCLP"
+
         Log.i("total2", "El total es:"+ totalTextView.text)
     }
 

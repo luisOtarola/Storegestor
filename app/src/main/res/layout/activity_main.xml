@@ -42,12 +42,12 @@
 
     <Button
         android:id="@+id/button_shoppingList"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:background="@drawable/square_button"
         android:text="@string/text_shopping_button"
-        android:textColor="@color/paleta300"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -70,12 +70,13 @@
 
     <Button
         android:id="@+id/button_inventoryList"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/square_button_cian"
         android:text="@string/text_inventory_button"
-        android:textColor="@color/paleta300"
+
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,12 +85,12 @@
 
     <Button
         android:id="@+id/button_placesInterest"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/square_button_cian"
+        android:textColor="@color/black"
         android:text="@string/text_places_interest_button"
-        android:textColor="@color/paleta300"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

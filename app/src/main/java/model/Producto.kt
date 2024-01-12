@@ -6,7 +6,7 @@ import android.os.Parcelable
 class Producto(
 
     val nombre: String?,
-    val precio: Double,
+    val precio: Int,
     val cantidad: Int,
     val descripcion: String?,
     val categoria: Categoria,
@@ -15,14 +15,14 @@ class Producto(
 {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.readDouble(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readString(),
         parcel.readParcelable(Categoria::class.java.classLoader)!!
     )
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nombre)
-        parcel.writeDouble(precio)
+        parcel.writeInt(precio)
         parcel.writeInt(cantidad)
         parcel.writeString(descripcion)
         parcel.writeParcelable(categoria, flags)

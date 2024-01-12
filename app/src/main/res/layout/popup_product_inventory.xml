@@ -6,28 +6,28 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textViewNombre"
+        android:id="@+id/textViewNombre_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/text_popup_name" />
 
     <EditText
-        android:id="@+id/editTextNombre"
+        android:id="@+id/editTextNombre_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editText_popup_name"
         android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewPrecio"
+        android:id="@+id/textViewPrecio_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/text_popup_price" />
 
     <EditText
-        android:id="@+id/editTextPrecio"
+        android:id="@+id/editTextPrecio_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editText_popup_price"
@@ -35,14 +35,14 @@
         android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewCantidad"
+        android:id="@+id/textViewCantidad_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/text_popup_amount" />
 
     <EditText
-        android:id="@+id/editTextCantidad"
+        android:id="@+id/editTextCantidad_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editText_popup_amount"
@@ -50,28 +50,28 @@
         android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewDescripcion"
+        android:id="@+id/textViewDescripcion_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/text_popup_description" />
 
     <EditText
-        android:id="@+id/editTextDescripcion"
+        android:id="@+id/editTextDescripcion_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editText_popup_description"
         android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewCategoria"
+        android:id="@+id/textViewCategoria_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="@string/text_popup_category" />
 
     <Spinner
-        android:id="@+id/spinnerCategoria"
+        android:id="@+id/spinnerCategoria_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"/>

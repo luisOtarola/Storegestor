@@ -18,6 +18,17 @@
     </string>
     <string name="text_button_add_product">Añadir producto</string>
 
+    <!-- Popup Titles -->
+    <string name="text_popup_name">Nombre del Producto</string>
+    <string name="editText_popup_name">Ingrese el nombre del producto</string>
+    <string name="text_popup_price">Precio del Producto</string>
+    <string name="editText_popup_price">Ingrese el precio del producto</string>
+    <string name="text_popup_amount">Cantidad del Producto</string>
+    <string name="editText_popup_amount">Ingrese la cantidad del producto</string>
+    <string name="text_popup_description">Descripción del Producto</string>
+    <string name="editText_popup_description">Ingrese la descripción del producto</string>
+    <string name="text_popup_category">Categoría del Producto</string>
+
     <!-- Adapter Titles -->
     <string name="wordName">Nombre</string>
     <string name="wordPrice">Precio</string>
