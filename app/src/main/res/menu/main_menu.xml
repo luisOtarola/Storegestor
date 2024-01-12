@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/text_toolbar_about"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_preferences"
+        android:title="@string/text_toolbar_preferences"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_exit"
+        android:title="@string/text_toolbar_exit"
+        app:showAsAction="never" />
+
+</menu>

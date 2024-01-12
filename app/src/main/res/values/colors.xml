@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <color name="amarillo">#FEC34D</color>
+    <color name="cian">#46CDE6</color>
+
+    <color name="paleta50">#eff6fe</color>
+    <color name="paleta100">#ddebfc</color>
+    <color name="paleta300">#99c8f7</color>
+    <color name="paleta500">#468aeb</color>
+    <color name="paleta700">#2858cd</color>
+    <color name="paleta900">#244084</color>
+    <color name="paleta950">#1b2950</color>
+
 </resources>

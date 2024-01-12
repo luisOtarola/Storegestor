@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Store gestor</string>
+
+    <string name="title_main">COMPRA Y GUARDA</string>
+    <string name="text_shopping_button">Lista de compra</string>
+    <string name="text_inventory_button">Mis productos</string>
+    <string name="text_places_interest_button">Lugares de interes</string>
+    <string name="text_total_Pay">Total productos:</string>
+    <string name="text_total_Pay_number">17.500</string>
+
+    <string name="text_toolbar_preferences">Preferencias</string>
+    <string name="text_toolbar_about">Acerca del creador</string>
+    <string name="text_toolbar_exit">Salir</string>
+
+    <string name="text_about">Este proyecto fue creado por el estudiantes de ingeniería
+        en desarrollo de videojuegos y realidad virtual. \n\n
+          Luis Otarola\n\n\n
+    </string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
