@@ -1,5 +1,6 @@
 package cl.litegames
 
+import cl.litegames.ShoppingList
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

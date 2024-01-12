@@ -1,6 +1,9 @@
 package model
 
-enum class Categoria {
+import android.os.Parcel
+import android.os.Parcelable
+
+enum class Categoria : Parcelable {
     FRUTAS,
     VERDURAS,
     CARNES,
@@ -11,16 +14,23 @@ enum class Categoria {
     CONGELADOS,
     SNACKS;
 
-    companion object {
-        private val categorias = mutableSetOf<String>()
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+    }
 
-        fun agregarCategoria(categoria: String) {
-            categorias.add(categoria.uppercase())
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Categoria> {
+        override fun createFromParcel(parcel: Parcel): Categoria {
+            return valueOf(parcel.readString()!!)
         }
 
-        fun obtenerCategorias(): Set<String> {
-            return (enumValues<Categoria>().map { it.name } + categorias).toSet()
+        override fun newArray(size: Int): Array<Categoria?> {
+            return arrayOfNulls(size)
         }
     }
 }
+
 

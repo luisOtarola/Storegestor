@@ -16,8 +16,16 @@
         en desarrollo de videojuegos y realidad virtual. \n\n
           Luis Otarola\n\n\n
     </string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="text_button_add_product">Añadir producto</string>
 
+    <!-- Adapter Titles -->
+    <string name="wordName">Nombre</string>
+    <string name="wordPrice">Precio</string>
+    <string name="wordAmount">Cantidad</string>
+    <string name="wordDescription">Descripión</string>
+    <string name="wordCategory">Categoria</string>
+
+    <string name="title_activity_settings">SettingsActivity</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

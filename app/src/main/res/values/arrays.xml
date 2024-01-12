@@ -9,4 +9,18 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <array name="categorias">
+        <item>FRUTAS</item>
+        <item>VERDURAS</item>
+        <item>CARNES</item>
+        <item>LACTEOS</item>
+        <item>PANADERIA</item>
+        <item>CEREALES_Y_GRANOS</item>
+        <item>BEBIDAS</item>
+        <item>CONGELADOS</item>
+        <item>SNACKS</item>
+    </array>
+
+
 </resources>
