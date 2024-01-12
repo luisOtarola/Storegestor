@@ -101,6 +101,7 @@
         app:layout_constraintVertical_bias="0.957" />
 
     <ListView
+        android:id="@+id/listView_productList"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"

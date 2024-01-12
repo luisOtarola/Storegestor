@@ -1,15 +1,13 @@
 package cl.litegames
 
+import adapter.ProductAdapter
+import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import model.Categoria
 import model.Producto
 
@@ -17,44 +15,32 @@ class ShoppingList : AppCompatActivity() {
 
     private lateinit var backButton: ImageView
     private lateinit var createProductButton: Button
+    private lateinit var productList: ListView
+    private lateinit var productAdapter: ProductAdapter
+
+    private var listaDeProductos = mutableListOf<Producto>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_list)
 
-        backButton = findViewById(R.id.button_back_shopping) as ImageView
-        createProductButton = findViewById(R.id.create_product) as Button
+        backButton = findViewById(R.id.button_back_shopping)
+        createProductButton = findViewById(R.id.create_product)
+        productList = findViewById(R.id.listView_productList)
+
+        // Inicializar el adaptador
+        productAdapter = ProductAdapter(this, R.layout.product_list, listaDeProductos)
+        productList.adapter = productAdapter
 
         backButton.setOnClickListener {
             val aboutIntent = Intent(this, MainActivity::class.java)
             startActivity(aboutIntent)
         }
+
         createProductButton.setOnClickListener {
             mostrarDialogoProducto()
         }
-
-
     }
-    /*private fun mostrarDialogo() {
-        val builder = AlertDialog.Builder(this)
-
-        builder.setTitle("Nuevo Producto")
-        builder.setMessage("¿Deseas agregar un nuevo producto?")
-
-        // Configurar un botón de "Aceptar"
-        builder.setPositiveButton("Aceptar") { _, _ ->
-            mostrarDialogoProducto()
-        }
-
-        // Configurar un botón de "Cancelar"
-        builder.setNegativeButton("Cancelar") { dialog, _ ->
-
-            dialog.dismiss() // Cierra el cuadro de diálogo
-        }
-
-        // Mostrar el cuadro de diálogo
-        val dialog = builder.create()
-        dialog.show()
-    }*/
 
     private fun mostrarDialogoProducto() {
         val builder = AlertDialog.Builder(this)
@@ -63,14 +49,14 @@ class ShoppingList : AppCompatActivity() {
         // Pasa la vista al builder
         builder.setView(view)
 
-        // Obtén referencias a los EditText y al Spinner
+        // Obtiene referencias a los EditText y al Spinner
         val editTextNombre = view.findViewById<EditText>(R.id.editTextNombre)
         val editTextPrecio = view.findViewById<EditText>(R.id.editTextPrecio)
         val editTextCantidad = view.findViewById<EditText>(R.id.editTextCantidad)
         val editTextDescripcion = view.findViewById<EditText>(R.id.editTextDescripcion)
         val spinnerCategoria = view.findViewById<Spinner>(R.id.spinnerCategoria)
 
-        // Obtén el array de categorías desde resources
+        // Obtiene el array de categorías desde resources
         val categoriasArray = resources.getStringArray(R.array.categorias)
 
         // Crea un ArrayAdapter utilizando el array y el diseño por defecto del Spinner
@@ -93,12 +79,19 @@ class ShoppingList : AppCompatActivity() {
             // Crea un objeto Producto con los datos del diálogo
             val nuevoProducto = Producto(nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
 
-            // Utiliza los valores como desees (puedes mostrarlos, guardarlos, etc.)
-            mostrarToast("Nombre: $nombre, Precio: $precio, Cantidad: $cantidad, Descripción: $descripcion, Categoría: $categoria")
+            // Añade el nuevo producto a la lista
+            listaDeProductos.add(nuevoProducto)
 
-            // Guarda el nuevo producto
-            //listaDeProductos.add(nuevoProducto)
+            // Notifica al adaptador
+            productAdapter.notifyDataSetChanged()
 
+            // Utiliza los valores
+            mostrarToast("Producto añadido: $nombre")
+
+            Log.i("ListaProductos", "Lista después de agregar un producto: $listaDeProductos")
+
+            // Actualiza el total
+            actualizarTotal()
         }
 
         // Configurar un botón de "Cancelar"
@@ -110,14 +103,26 @@ class ShoppingList : AppCompatActivity() {
         val dialog = builder.create()
 
         // Configurar la atenuación del fondo detrás del diálogo
-        dialog.window?.setDimAmount(0.5f) // Ajusta este valor según sea necesario (0.0f para nada de atenuación, 1.0f para atenuación completa)
+        dialog.window?.setDimAmount(0.5f)
 
         dialog.show()
     }
 
+    @SuppressLint("StringFormatInvalid")
+    private fun actualizarTotal() {
+        // Calcular la suma
+        val total = listaDeProductos.sumOf { it.precio * it.cantidad }
+
+        Log.i("total0", "El total es:$total")
+
+        // Actualizar el texto
+        val totalTextView = findViewById<TextView>(R.id.text_total_products_number)
+        Log.i("total1", "El total es:"+ totalTextView.text)
+        totalTextView.text = getString(R.string.text_total_Pay_number, total)
+        Log.i("total2", "El total es:"+ totalTextView.text)
+    }
 
     private fun mostrarToast(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
-
 }

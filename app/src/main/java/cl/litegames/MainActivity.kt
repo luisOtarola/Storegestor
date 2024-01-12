@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         placesButton = findViewById(R.id.button_placesInterest) as Button
         shoppingButton = findViewById(R.id.button_shoppingList) as Button
         val toolbar: Toolbar = findViewById(R.id.toolbar_home)
-        supportActionBar?.title = null
-        setSupportActionBar(toolbar)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = null
 
         inventoryButton.setOnClickListener {
             val aboutIntent = Intent(this, InventoryActivity::class.java)
