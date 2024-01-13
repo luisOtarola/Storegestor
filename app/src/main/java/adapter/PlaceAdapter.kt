@@ -38,9 +38,9 @@ class PlaceAdapter(
 
         val lugar = getItem(pos)
 
-        holder.nombreTextView.text = context.getString(R.string.wordName) + ": " + lugar?.nombre
-        holder.direccionTextView.text = context.getString(R.string.wordPrice) + ": " + lugar?.direccion
-        holder.descripcionTextView.text = context.getString(R.string.wordDescription) + ": " + lugar?.descripcion
+        holder.nombreTextView.text = context.getString(R.string.wordNamePlace) + ": " + lugar?.nombre
+        holder.direccionTextView.text = context.getString(R.string.wordDirectionPlace) + ": " + lugar?.direccion
+        holder.descripcionTextView.text = context.getString(R.string.wordDescriptionPlace) + ": " + lugar?.descripcion
 
         return listItemView!!
     }

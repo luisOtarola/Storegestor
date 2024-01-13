@@ -31,7 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editTextViewDireccion_place"
-        android:inputType="numberDecimal"
         android:minHeight="48dp" />
 
     <TextView
@@ -46,7 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editTextDescripcion_place"
-        android:inputType="number"
         android:minHeight="48dp" />
 </LinearLayout>
 
