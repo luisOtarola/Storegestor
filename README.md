@@ -4,6 +4,7 @@
 Esta aplicación móvil de gestión de compras ha sido diseñada para ayudar a los usuarios a llevar un registro completo de los artículos comestibles y otras mercaderías, facilitando la planificación y organización de sus compras. La aplicación ofrece funciones como registro, inventario de productos, agrupación para planificar las compras, asignación de precios y presupuesto, y actualización del inventario.
 
 Link de video: https://youtu.be/Aq9UO0d8Pzo
+
 Link apk: https://drive.google.com/file/d/10hhcQRmH_rwOYE9RaEHRcS-w_wJKY81X/view?usp=sharing
 
 Paquete del Proyecto
