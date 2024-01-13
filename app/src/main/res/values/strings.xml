@@ -1,24 +1,30 @@
 <resources>
     <string name="app_name">Store gestor</string>
 
+    <!-- Home Titles -->
     <string name="title_main">COMPRA Y GUARDA</string>
     <string name="text_shopping_button">Lista de compra</string>
     <string name="text_inventory_button">Mis productos</string>
-    <string name="text_places_interest_button">Lugares de interes</string>
+    <string name="text_places_interest_button">Lugares de interés</string>
     <string name="text_total_Pay">Total productos:</string>
     <string name="text_total_Pay_number">17.500</string>
 
+    <!-- Toolbar Titles -->
     <string name="text_toolbar_preferences">Preferencias</string>
     <string name="text_toolbar_about">Acerca del creador</string>
     <string name="text_toolbar_exit">Salir</string>
 
-    <string name="text_about">Este proyecto fue creado por el estudiantes de ingeniería
+    <!-- About Titles -->
+    <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería
         en desarrollo de videojuegos y realidad virtual. \n\n
-          Luis Otarola\n\n\n
+        Luis Otarola\n\n\n
     </string>
-    <string name="text_button_add_product">Añadir producto</string>
 
-    <!-- Popup Titles -->
+    <!-- ButtonAdd Titles -->
+    <string name="text_button_add_product">Añadir producto</string>
+    <string name="text_button_add_place">Añadir lugar de interés</string>
+
+    <!-- Popup product Titles -->
     <string name="text_popup_name">Nombre del Producto</string>
     <string name="editText_popup_name">Ingrese el nombre del producto</string>
     <string name="text_popup_price">Precio del Producto</string>
@@ -29,26 +35,39 @@
     <string name="editText_popup_description">Ingrese la descripción del producto</string>
     <string name="text_popup_category">Categoría del Producto</string>
 
-    <!-- Adapter Titles -->
+    <!-- Popup places Titles -->
+    <string name="text_popup_name_place">Nombre del Lugar</string>
+    <string name="editText_popup_name_place">Ingrese el nombre del lugar</string>
+    <string name="textViewDireccion_place">Dirección del lugar</string>
+    <string name="editTextViewDireccion_place">Ingrese la dirección del lugar</string>
+    <string name="textViewDescripcion_place">Descripción del lugar</string>
+    <string name="editTextDescripcion_place">Ingrese la descripción del lugar</string>
+
+    <!-- Adapter product Titles -->
     <string name="wordName">Nombre</string>
     <string name="wordPrice">Precio</string>
     <string name="wordAmount">Cantidad</string>
-    <string name="wordDescription">Descripión</string>
-    <string name="wordCategory">Categoria</string>
+    <string name="wordDescription">Descripción</string>
+    <string name="wordCategory">Categoría</string>
+
+    <!-- Adapter place Titles -->
+    <string name="wordNamePlace">Nombre</string>
+    <string name="wordDirectionPlace">Dirección</string>
+    <string name="wordDescriptionPlace">Descripción</string>
 
     <string name="title_activity_settings">SettingsActivity</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header">Mensajes</string>
+    <string name="sync_header">Sincronización</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title">Tu firma</string>
+    <string name="reply_title">Acción de respuesta predeterminada</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title">Sincronizar correo periódicamente</string>
+    <string name="attachment_title">Descargar adjuntos de correos entrantes</string>
+    <string name="attachment_summary_on">Descargar automáticamente adjuntos para correos entrantes
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off">Descargar adjuntos solo cuando se solicite manualmente</string>
 </resources>

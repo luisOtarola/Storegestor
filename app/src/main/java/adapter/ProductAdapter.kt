@@ -45,11 +45,6 @@ class ProductAdapter(
         holder.descripcionTextView.text = context.getString(R.string.wordDescription) + ": " + producto?.descripcion
         holder.categoriaTextView.text = context.getString(R.string.wordCategory) + ": " + producto?.categoria
 
-        //val inalienable = if(producto?.inalienable!!) context.getString(R.string.wordYes) else context.getString(R.string.wordNo)
-        //holder.inalienableTextView.text = context.getString(R.string.wordInalienable) + ": " + inalienable
-
-        //holder.typeTextView.text = context.getString(R.string.wordType) + ": " + feriado?.type
-
         return listItemView!!
     }
 
