@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import cl.litegames.R
-import model.Producto
+import data.model.Producto
 
 class ProductAdapter(
     context : Context,

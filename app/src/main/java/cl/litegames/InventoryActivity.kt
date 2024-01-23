@@ -1,20 +1,13 @@
 package cl.litegames
 
+import data.Dao.ProductoDao
 import adapter.ProductAdapter
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import model.Categoria
-import model.Producto
+import androidx.appcompat.app.AppCompatActivity
+import data.model.Producto
 
 class InventoryActivity : AppCompatActivity() {
 
@@ -23,12 +16,16 @@ class InventoryActivity : AppCompatActivity() {
     private lateinit var productList: ListView
     private lateinit var productAdapter: ProductAdapter
 
+    // Var interfaz y DB
+    private lateinit var productoDao: ProductoDao
+
     private var listaDeProductos = mutableListOf<Producto>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
 
-        backButton = findViewById(R.id.button_back_inventory) as ImageView
+        backButton = findViewById(R.id.button_back_inventory)
         createProductButton = findViewById(R.id.create_product_inventory)
         productList = findViewById(R.id.listView_productList_Inventory)
 
@@ -43,7 +40,17 @@ class InventoryActivity : AppCompatActivity() {
         createProductButton.setOnClickListener {
             mostrarDialogoProducto()
         }
+
+
+        /*
+        val db = AppDatabase.getInstance(this)
+        productoDao = db.productoDao()
+
+        // Carga los productos desde la base de datos
+        listaDeProductos.addAll(productoDao.getAll())
+        productAdapter.notifyDataSetChanged()*/
     }
+
     private fun mostrarDialogoProducto() {
 
         val builder = AlertDialog.Builder(this)
@@ -80,16 +87,31 @@ class InventoryActivity : AppCompatActivity() {
             val categoria = spinnerCategoria.selectedItem.toString()
 
             // Crea un objeto Producto con los datos del diálogo
-            val nuevoProducto = Producto(nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
+            //val nuevoProducto = Producto(nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
 
-            // Añade el nuevo producto a la lista
-            listaDeProductos.add(nuevoProducto)
+            /*val nuevoProducto = Producto(
+                nombre = editTextNombre.text.toString(),
+                precio = editTextPrecio.text.toString().toIntOrNull() ?: 0,
+                cantidad = editTextCantidad.text.toString().toIntOrNull() ?: 0,
+                descripcion = editTextDescripcion.text.toString(),
+                categoria = Categoria.valueOf(categoria)
+            )
+
+            // Añade el nuevo producto a la base de datos
+            GlobalScope.launch(Dispatchers.IO) {
+                productoDao.insertAll(nuevoProducto)
+            }*/
+            //productoDao.insertAll(nuevoProducto)
+
+            // Actualiza la lista de productos desde la base de datos
+            //listaDeProductos.clear()
+            //listaDeProductos.addAll(productoDao.getAll())
 
             // Notifica al adaptador
             productAdapter.notifyDataSetChanged()
 
             // Utiliza los valores
-            mostrarToast("Producto añadido: $nombre")
+            //mostrarToast("Producto añadido: $nombre")
         }
         // Configurar un botón de "Cancelar"
         builder.setNegativeButton("Cancelar") { dialog, _ ->
@@ -104,9 +126,8 @@ class InventoryActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
     private fun mostrarToast(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 }
-
-

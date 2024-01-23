@@ -8,8 +8,8 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import model.Categoria
-import model.Producto
+import data.model.Categoria
+import data.model.Producto
 
 class ShoppingList : AppCompatActivity() {
 
@@ -78,16 +78,16 @@ class ShoppingList : AppCompatActivity() {
             val categoria = spinnerCategoria.selectedItem.toString()
 
             // Crea un objeto Producto con los datos del diálogo
-            val nuevoProducto = Producto(nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
+            //val nuevoProducto = Producto(nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
 
             // Añade el nuevo producto a la lista
-            listaDeProductos.add(nuevoProducto)
+            //listaDeProductos.add(nuevoProducto)
 
             // Notifica al adaptador
-            productAdapter.notifyDataSetChanged()
+            //productAdapter.notifyDataSetChanged()
 
             // Utiliza los valores
-            mostrarToast("Producto añadido: $nombre")
+            //mostrarToast("Producto añadido: $nombre")
 
             Log.i("ListaProductos", "Lista después de agregar un producto: $listaDeProductos")
 
