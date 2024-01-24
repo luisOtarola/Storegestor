@@ -32,14 +32,20 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search->{
-                val aboutAct = Intent(this, AboutActivity::class.java)
-                startActivity(aboutAct)
+
+            R.id.action_list->{
+                val Act = Intent(this, ActionListActivity::class.java)
+                startActivity(Act)
+                return true
+            }
+            R.id.action_about->{
+                val Act = Intent(this, AboutActivity::class.java)
+                startActivity(Act)
                 return true
             }
             R.id.action_preferences->{
-                val aboutAct = Intent(this, SettingsActivity::class.java)
-                startActivity(aboutAct)
+                val Act = Intent(this, SettingsActivity::class.java)
+                startActivity(Act)
                 return true
             }
             R.id.action_exit->{

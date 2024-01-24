@@ -6,9 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import data.ViewModel.ProductViewModel
 import data.model.Categoria
@@ -35,6 +37,12 @@ class InventoryActivity : AppCompatActivity() {
         backButton = findViewById(R.id.button_back_inventory)
         createProductButton = findViewById(R.id.create_product_inventory)
         productList = findViewById(R.id.listView_productList_Inventory)
+
+        //toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar_inventory)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = null
 
         // Inicializar el adaptador
         productAdapterMin = ProductAdapterMin(
@@ -63,6 +71,22 @@ class InventoryActivity : AppCompatActivity() {
             listaDeProductos.clear()
             listaDeProductos.addAll(productos)
             productAdapterMin.notifyDataSetChanged()
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.inventory_action_search->{
+                val Act = Intent(this, SearchProductActivity::class.java)
+                startActivity(Act)
+                return true
+            }
+            R.id.inventory_action_orderBy->{
+                //val Act = Intent(this, AboutActivity::class.java)
+                //startActivity(Act)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 

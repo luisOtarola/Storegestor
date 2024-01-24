@@ -9,10 +9,15 @@
     <string name="text_total_Pay">Total productos:</string>
     <string name="text_total_Pay_number">17.500</string>
 
-    <!-- Toolbar Titles -->
+    <!-- Toolbar menu Titles -->
+    <string name="text_toolbar_actionList">Lista de acciones</string>
     <string name="text_toolbar_preferences">Preferencias</string>
     <string name="text_toolbar_about">Acerca del creador</string>
     <string name="text_toolbar_exit">Salir</string>
+
+    <!-- Toolbar inventory Titles -->
+    <string name="text_toolbar_search">Buscar</string>
+    <string name="text_toolbar_orderBy">Ordenar</string>
 
     <!-- About Titles -->
     <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería
