@@ -1,5 +1,6 @@
 package data.Dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -12,7 +13,7 @@ import data.model.Producto
 interface ProductoDao {
 
     @Query("SELECT * FROM productos ORDER By id ASC")
-    fun getAll(): List<Producto>
+    fun getAllData(): LiveData<List<Producto>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(vararg productos: Producto)

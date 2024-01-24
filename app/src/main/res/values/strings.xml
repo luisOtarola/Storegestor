@@ -35,25 +35,12 @@
     <string name="editText_popup_description">Ingrese la descripción del producto</string>
     <string name="text_popup_category">Categoría del Producto</string>
 
-    <!-- Popup places Titles -->
-    <string name="text_popup_name_place">Nombre del Lugar</string>
-    <string name="editText_popup_name_place">Ingrese el nombre del lugar</string>
-    <string name="textViewDireccion_place">Dirección del lugar</string>
-    <string name="editTextViewDireccion_place">Ingrese la dirección del lugar</string>
-    <string name="textViewDescripcion_place">Descripción del lugar</string>
-    <string name="editTextDescripcion_place">Ingrese la descripción del lugar</string>
-
     <!-- Adapter product Titles -->
     <string name="wordName">Nombre</string>
     <string name="wordPrice">Precio</string>
     <string name="wordAmount">Cantidad</string>
     <string name="wordDescription">Descripción</string>
     <string name="wordCategory">Categoría</string>
-
-    <!-- Adapter place Titles -->
-    <string name="wordNamePlace">Nombre</string>
-    <string name="wordDirectionPlace">Dirección</string>
-    <string name="wordDescriptionPlace">Descripción</string>
 
     <string name="title_activity_settings">SettingsActivity</string>
     <!-- Preference Titles -->
@@ -70,4 +57,6 @@
     <string name="attachment_summary_on">Descargar automáticamente adjuntos para correos entrantes
     </string>
     <string name="attachment_summary_off">Descargar adjuntos solo cuando se solicite manualmente</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
