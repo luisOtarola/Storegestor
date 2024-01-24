@@ -34,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    kapt {
+        useBuildCache = false
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -45,11 +49,6 @@ dependencies {
     implementation("androidx.preference:preference:1.2.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
-
-    /* Dependencias de Room
-    implementation("androidx.room:room-runtime:2.3.0")
-    implementation("androidx.room:room-ktx:2.3.0")
-    kapt("androidx.room:room-compiler:2.3.0")*/
 
     val room_version = "2.5.0"
 
@@ -77,6 +76,8 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
 
+    // ...
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

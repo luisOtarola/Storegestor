@@ -13,7 +13,10 @@
         android:theme="@style/Theme.StoreGestor"
         tools:targetApi="31">
         <activity
-            android:name=".InventoryFragmentActivity"
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProductActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
@@ -21,12 +24,6 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ShoppingList"
-            android:exported="false" />
-        <activity
-            android:name=".PlacesInterestActivity"
             android:exported="false" />
         <activity
             android:name=".InventoryActivity"

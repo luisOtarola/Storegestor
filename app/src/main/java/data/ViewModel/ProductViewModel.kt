@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val getAllData: LiveData<List<Producto>>
+    val getAllData: LiveData<List<Producto>>
     private val repository: ProductRepository
 
     init {
@@ -24,4 +24,18 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
     fun addProduct(producto: Producto) {
         viewModelScope.launch(Dispatchers.IO) { repository.addProduct(producto) }
     }
+    fun deleteProduct(producto: Producto) {
+        viewModelScope.launch(Dispatchers.IO) { repository.deleteProduct(producto) }
+    }
+
+    fun getProductById(productId: Int): LiveData<Producto?> {
+        return repository.getProductById(productId)
+    }
+
+    fun updateProduct(producto: Producto) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateProduct(producto)
+        }
+    }
+
 }

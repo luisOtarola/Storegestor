@@ -1,15 +1,15 @@
 package cl.litegames
 
-import data.Dao.ProductoDao
 import adapter.ProductAdapter
+import adapter.ProductAdapterMin
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import data.ViewModel.ProductViewModel
 import data.model.Categoria
 import data.model.Producto
@@ -20,6 +20,8 @@ class InventoryActivity : AppCompatActivity() {
     private lateinit var createProductButton: Button
     private lateinit var productList: ListView
     private lateinit var productAdapter: ProductAdapter
+
+    private lateinit var productAdapterMin: ProductAdapterMin
 
     // Var interfaz y DB
     private lateinit var mProductViewModel: ProductViewModel
@@ -35,8 +37,15 @@ class InventoryActivity : AppCompatActivity() {
         productList = findViewById(R.id.listView_productList_Inventory)
 
         // Inicializar el adaptador
-        productAdapter = ProductAdapter(this, R.layout.product_list, listaDeProductos)
-        productList.adapter = productAdapter
+        productAdapterMin = ProductAdapterMin(
+            this,
+            R.layout.custom_row,
+            listaDeProductos,
+            { position -> editarProducto(position) },
+            { position -> eliminarProducto(position) },
+            { position -> verDetallesProducto(position) }  // Nuevo
+        )
+        productList.adapter = productAdapterMin
 
         backButton.setOnClickListener {
             val aboutIntent = Intent(this, MainActivity::class.java)
@@ -46,8 +55,40 @@ class InventoryActivity : AppCompatActivity() {
             mostrarDialogoProducto()
         }
 
-        // Mi viewmModel
+        // Mi viewModel
         mProductViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+
+        // Observar los cambios en la lista de productos y actualizar la interfaz de usuario
+        mProductViewModel.getAllData.observe(this) { productos ->
+            listaDeProductos.clear()
+            listaDeProductos.addAll(productos)
+            productAdapterMin.notifyDataSetChanged()
+        }
+    }
+
+    private fun verDetallesProducto(position: Int) {
+        val producto = listaDeProductos[position]
+
+        // Crea un Intent para abrir la actividad de detalles
+        val intent = Intent(this, ProductDetailActivity::class.java)
+        // Pasa el ID del producto a mostrar detalles
+        intent.putExtra("PRODUCT_ID", producto.id)
+        startActivity(intent)
+    }
+
+    private fun eliminarProducto(position: Int) {
+        val producto = listaDeProductos[position]
+        mProductViewModel.deleteProduct(producto)
+    }
+
+    private fun editarProducto(position: Int) {
+        val producto = listaDeProductos[position]
+
+        // Crea un Intent para abrir la actividad de edición
+        val intent = Intent(this, EditProductActivity::class.java)
+        // Pasa el ID del producto a editar
+        intent.putExtra("PRODUCT_ID", producto.id)
+        startActivity(intent)
     }
 
     private fun mostrarDialogoProducto() {
@@ -95,8 +136,7 @@ class InventoryActivity : AppCompatActivity() {
             }
 
             // Notifica al adaptador
-            productAdapter.notifyDataSetChanged()
-
+            productAdapterMin.notifyDataSetChanged()
         }
         // Configurar un botón de "Cancelar"
         builder.setNegativeButton("Cancelar") { dialog, _ ->

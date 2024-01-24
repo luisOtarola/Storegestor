@@ -12,7 +12,8 @@ enum class Categoria : Parcelable {
     CEREALES_Y_GRANOS,
     BEBIDAS,
     CONGELADOS,
-    SNACKS;
+    SNACKS,
+    DEFAULT;
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
