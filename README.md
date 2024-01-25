@@ -18,6 +18,7 @@ Esta aplicación móvil de gestión de compras ha sido diseñada para ayudar a l
     - Link apk:
 
 - Paquete del Proyecto
+  
 cl.litesGames
 
 **Primera versión:**
