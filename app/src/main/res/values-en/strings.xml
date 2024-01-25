@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Store Manager</string>
+
+    <!-- Home Titles -->
+    <string name="title_main">SHOPPING &amp; SAVING</string>
+    <string name="text_shopping_button">Shopping List</string>
+    <string name="text_inventory_button">My Products</string>
+    <string name="text_places_interest_button">Places of Interest</string>
+    <string name="text_total_Pay">Total Products:</string>
+    <string name="text_total_Pay_number">17,500</string>
+
+    <!-- Inventory Titles -->
+    <string name="text_linearL_amount">Quantity</string>
+    <string name="text_linearL_product">Product</string>
+    <string name="text_linearL_price">Price</string>
+    <string name="editText_name_search">Search by name</string>
+
+    <!-- Toolbar menu Titles -->
+    <string name="text_toolbar_actionList">Action List</string>
+    <string name="text_toolbar_preferences">Preferences</string>
+    <string name="text_toolbar_about">About the Creator</string>
+    <string name="text_toolbar_exit">Exit</string>
+
+    <!-- Toolbar inventory Titles -->
+    <string name="text_toolbar_search">Search</string>
+    <string name="text_toolbar_orderBy">Order By</string>
+    <string name="select_category">Select a category</string>
+
+    <!-- Edit product Titles -->
+    <string name="editTextProductName_hint">Product Name</string>
+    <string name="editTextProductPrice_hint">Price</string>
+    <string name="editTextProductQuantity_hint">Quantity</string>
+    <string name="editTextProductDescription_hint">Description</string>
+    <string name="buttonText_buttonSaveEdit">Save</string>
+
+    <!-- About Titles -->
+    <string name="text_about">This project was created by the student of engineering in video game development and virtual reality.\n\nLuis Otarola</string>
+
+    <!-- Action Titles -->
+    <string name="title_activity_actionList">Movement History</string>
+
+    <!-- ButtonAdd Titles -->
+    <string name="text_button_add_product">Add Product</string>
+    <string name="text_button_add_place">Add Place of Interest</string>
+
+    <!-- Custom_Row.xml Titles -->
+    <string name="icon2_descriptionEdit">Edit</string>
+    <string name="icon2_descriptionDelete">Delete</string>
+    <string name="icon2_descriptionSeeDetail">Show Details</string>
+    <string name="text_cantidad_customRow">Q</string>
+    <string name="text_precio_customRow">2000</string>
+
+    <!-- Popup product Titles -->
+    <string name="text_popup_name">Product Name</string>
+    <string name="editText_popup_name">Enter product name</string>
+    <string name="text_popup_price">Product Price</string>
+    <string name="editText_popup_price">Enter product price</string>
+    <string name="text_popup_amount">Product Quantity</string>
+    <string name="editText_popup_amount">Enter product quantity</string>
+    <string name="text_popup_description">Product Description</string>
+    <string name="editText_popup_description">Enter product description</string>
+    <string name="text_popup_category">Product Category</string>
+
+    <!-- Adapter product Titles -->
+    <string name="wordName">Name</string>
+    <string name="wordPrice">Price</string>
+    <string name="wordAmount">Quantity</string>
+    <string name="wordDescription">Description</string>
+    <string name="wordCategory">Category</string>
+
+    <!-- Adapter action Titles -->
+    <string name="wordNameProduct">Product Name</string>
+    <string name="wordAction">Action Performed</string>
+
+    <!-- Details product Titles -->
+    <string name="detail_name">Name: Product Name</string>
+    <string name="detail_price">Price: $100.00</string>
+    <string name="detail_quantity">Quantity: 10</string>
+    <string name="detail_description">Description: Detailed description of the product.</string>
+    <string name="detail_category">Category: Product Category</string>
+    <string name="text_seeDetail_title">Product Detail</string>
+
+    <!-- Edit product Titles -->
+    <string name="text_editProduct_title">Edit Product</string>
+
+    <!-- Setting Titles -->
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="sort_order_title">Sort Order</string>
+    <string name="messages_header">Settings</string>
+
+    <!-- DB Preference Titles -->
+    <string name="pref_category_database">Database</string>
+    <string name="pref_clear_database_key">clear_database</string>
+    <string name="pref_clear_database_title">Clear Database</string>
+    <string name="pref_clear_database_summary">Clear all data from the database</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">User Name</string>
+
+</resources>

@@ -22,5 +22,21 @@
         <item>SNACKS</item>
     </array>
 
+    <string-array name="sort_order_entries">
+        <item>Nombre Asc</item>
+        <item>Nombre Des</item>
+        <item>Precio Asc</item>
+        <item>Precio Des</item>
+        <item>Cantidad Asc</item>
+        <item>Cantidad Desc</item>
+    </string-array>
 
+    <string-array name="sort_order_values">
+        <item>NAME_ASC</item>
+        <item>NAME_DESC</item>
+        <item>PRICE_ASC</item>
+        <item>PRICE_DESC</item>
+        <item>QUANTITY_ASC</item>
+        <item>QUANTITY_DESC</item>
+    </string-array>
 </resources>

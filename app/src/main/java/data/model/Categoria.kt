@@ -1,4 +1,4 @@
-package model
+package data.model
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -12,7 +12,8 @@ enum class Categoria : Parcelable {
     CEREALES_Y_GRANOS,
     BEBIDAS,
     CONGELADOS,
-    SNACKS;
+    SNACKS,
+    DEFAULT;
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)

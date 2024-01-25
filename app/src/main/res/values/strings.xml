@@ -1,28 +1,54 @@
 <resources>
-    <string name="app_name">Store gestor</string>
+    <string name="app_name">Store Gestor</string>
 
     <!-- Home Titles -->
     <string name="title_main">COMPRA Y GUARDA</string>
-    <string name="text_shopping_button">Lista de compra</string>
+    <string name="text_shopping_button">Lista de compras</string>
     <string name="text_inventory_button">Mis productos</string>
     <string name="text_places_interest_button">Lugares de interés</string>
-    <string name="text_total_Pay">Total productos:</string>
-    <string name="text_total_Pay_number">17.500</string>
+    <string name="text_total_Pay">Total de productos:</string>
+    <string name="text_total_Pay_number">17,500</string>
 
-    <!-- Toolbar Titles -->
+    <!-- Inventory Titles -->
+    <string name="text_linearL_amount">Cantidad</string>
+    <string name="text_linearL_product">Producto</string>
+    <string name="text_linearL_price">Precio</string>
+    <string name="editText_name_search">Buscar por nombre</string>
+
+    <!-- Toolbar menu Titles -->
+    <string name="text_toolbar_actionList">Lista de acciones</string>
     <string name="text_toolbar_preferences">Preferencias</string>
     <string name="text_toolbar_about">Acerca del creador</string>
     <string name="text_toolbar_exit">Salir</string>
 
+    <!-- Toolbar inventory Titles -->
+    <string name="text_toolbar_search">Buscar</string>
+    <string name="text_toolbar_orderBy">Ordenar</string>
+    <string name="select_category">Selecciona una categoría</string>
+
+    <!-- Edit product Titles -->
+    <string name="editTextProductName_hint">Nombre del producto</string>
+    <string name="editTextProductPrice_hint">Precio</string>
+    <string name="editTextProductQuantity_hint">Cantidad</string>
+    <string name="editTextProductDescription_hint">Descripción</string>
+    <string name="buttonText_buttonSaveEdit">Guardar</string>
+
     <!-- About Titles -->
-    <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería
-        en desarrollo de videojuegos y realidad virtual. \n\n
-        Luis Otarola\n\n\n
-    </string>
+    <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería en desarrollo de videojuegos y realidad virtual.\n\nLuis Otarola</string>
+
+    <!-- Action Titles -->
+    <string name="title_activity_actionList">Historial de movimientos</string>
 
     <!-- ButtonAdd Titles -->
     <string name="text_button_add_product">Añadir producto</string>
     <string name="text_button_add_place">Añadir lugar de interés</string>
+
+    <!-- Custom_Row.xml Titles -->
+    <string name="icon2_descriptionEdit">Editar</string>
+    <string name="icon2_descriptionDelete">Eliminar</string>
+    <string name="icon2_descriptionSeeDetail">Mostrar detalles</string>
+    <string name="text_cantidad_customRow">C</string>
+    <string name="text_precio_customRow">2000</string>
 
     <!-- Popup product Titles -->
     <string name="text_popup_name">Nombre del Producto</string>
@@ -35,14 +61,6 @@
     <string name="editText_popup_description">Ingrese la descripción del producto</string>
     <string name="text_popup_category">Categoría del Producto</string>
 
-    <!-- Popup places Titles -->
-    <string name="text_popup_name_place">Nombre del Lugar</string>
-    <string name="editText_popup_name_place">Ingrese el nombre del lugar</string>
-    <string name="textViewDireccion_place">Dirección del lugar</string>
-    <string name="editTextViewDireccion_place">Ingrese la dirección del lugar</string>
-    <string name="textViewDescripcion_place">Descripción del lugar</string>
-    <string name="editTextDescripcion_place">Ingrese la descripción del lugar</string>
-
     <!-- Adapter product Titles -->
     <string name="wordName">Nombre</string>
     <string name="wordPrice">Precio</string>
@@ -50,24 +68,35 @@
     <string name="wordDescription">Descripción</string>
     <string name="wordCategory">Categoría</string>
 
-    <!-- Adapter place Titles -->
-    <string name="wordNamePlace">Nombre</string>
-    <string name="wordDirectionPlace">Dirección</string>
-    <string name="wordDescriptionPlace">Descripción</string>
+    <!-- Adapter action Titles -->
+    <string name="wordNameProduct">Nombre del producto</string>
+    <string name="wordAction">Acción realizada</string>
 
-    <string name="title_activity_settings">SettingsActivity</string>
+    <!-- Details product Titles -->
+    <string name="detail_name">Nombre: Nombre del Producto</string>
+    <string name="detail_price">Precio: $100.00</string>
+    <string name="detail_quantity">Cantidad: 10</string>
+    <string name="detail_description">Descripción: Descripción detallada del producto.</string>
+    <string name="detail_category">Categoría: Categoría del producto</string>
+    <string name="text_seeDetail_title">Detalle del Producto</string>
+
+    <!-- Edit product Titles -->
+    <string name="text_editProduct_title">Edición del Producto</string>
+
+    <!-- Setting Titles -->
+    <string name="title_activity_settings">Configuración</string>
+
     <!-- Preference Titles -->
-    <string name="messages_header">Mensajes</string>
-    <string name="sync_header">Sincronización</string>
+    <string name="sort_order_title">Orden de clasificación</string>
+    <string name="messages_header">Ajustes</string>
+
+    <!-- DB Preference Titles -->
+    <string name="pref_category_database">Base de datos</string>
+    <string name="pref_clear_database_key">clear_database</string>
+    <string name="pref_clear_database_title">Borrar Base de datos</string>
+    <string name="pref_clear_database_summary">Borrar todos los datos de la base de datos</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Tu firma</string>
-    <string name="reply_title">Acción de respuesta predeterminada</string>
+    <string name="signature_title">Nombre de usuario</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sincronizar correo periódicamente</string>
-    <string name="attachment_title">Descargar adjuntos de correos entrantes</string>
-    <string name="attachment_summary_on">Descargar automáticamente adjuntos para correos entrantes
-    </string>
-    <string name="attachment_summary_off">Descargar adjuntos solo cuando se solicite manualmente</string>
 </resources>

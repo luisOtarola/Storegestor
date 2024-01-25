@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/messages_header">
 
@@ -8,28 +9,21 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:key="sortOrder"
+            app:defaultValue="default_value"
+            app:entries="@array/sort_order_entries"
+            app:entryValues="@array/sort_order_values"
+            app:title="@string/sort_order_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/sync_header">
-
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
-
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
-    </PreferenceCategory>
+    <!--PreferenceCategory app:title="Base de datos">
+        <Preference
+            android:key="@string/pref_clear_database_key"
+            android:title="@string/pref_clear_database_title"
+            android:summary="@string/pref_clear_database_summary"
+            android:icon="@drawable/ic_delete"
+            android:iconSpaceReserved="true" />
+    </PreferenceCategory-->
 
 </PreferenceScreen>

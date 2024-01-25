@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/paleta50"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/text_listView_nombreProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/wordNameProduct"/>
+
+    <TextView
+        android:id="@+id/text_listView_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/wordAction"/>
+
+</LinearLayout>
