@@ -13,14 +13,13 @@ Esta aplicación móvil de gestión de compras ha sido diseñada para ayudar a l
 
 **Segunda version de la aplicación:**
 
-    - Link de video:
+    - Link de video: https://youtu.be/mvbJt2W-vCI
 
-    - Link apk:
+    - Link apk: https://drive.google.com/file/d/1OIgZKZf7inHFBsoDQuTPtCj7lC-nQwnn/view?usp=sharing
 
 - Paquete del Proyecto
   
 cl.litesGames
-
 **Primera versión:**
 
   - Funciones del Proyecto:
