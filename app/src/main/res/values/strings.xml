@@ -18,7 +18,6 @@
     <!-- Toolbar inventory Titles -->
     <string name="text_toolbar_search">Buscar</string>
     <string name="text_toolbar_orderBy">Ordenar</string>
-
     <string name="select_category">Selecciona una categoría</string>
 
     <!-- About Titles -->
@@ -26,6 +25,9 @@
         en desarrollo de videojuegos y realidad virtual. \n\n
         Luis Otarola\n\n\n
     </string>
+
+    <!-- Action Titles -->
+    <string name="title_activity_actionList">Historial de movimientos</string>
 
     <!-- ButtonAdd Titles -->
     <string name="text_button_add_product">Añadir producto</string>
@@ -49,6 +51,11 @@
     <string name="wordDescription">Descripción</string>
     <string name="wordCategory">Categoría</string>
 
+    <!-- Adapter action Titles -->
+    <string name="wordNameProduct">Nombre del producto</string>
+    <string name="wordAction">Acción realizada</string>
+
+
     <!-- Details product Titles -->
     <string name="detail_name">Nombre: Nombre del Producto</string>
     <string name="detail_price">Precio: $100.00</string>
@@ -60,22 +67,14 @@
     <!-- Edit product Titles -->
     <string name="text_editProduct_title">Edición del Producto</string>
 
+    <!-- Setting Titles -->
     <string name="title_activity_settings">SettingsActivity</string>
+
     <!-- Preference Titles -->
     <string name="sort_order_title">Orden de clasificación</string>
-    <string name="messages_header">Mensajes</string>
-    <string name="sync_header">Sincronización</string>
+    <string name="messages_header">Ajustes</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Tu firma</string>
-    <string name="reply_title">Acción de respuesta predeterminada</string>
+    <string name="signature_title">Nombre Usuario</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sincronizar correo periódicamente</string>
-    <string name="attachment_title">Descargar adjuntos de correos entrantes</string>
-    <string name="attachment_summary_on">Descargar automáticamente adjuntos para correos entrantes
-    </string>
-    <string name="attachment_summary_off">Descargar adjuntos solo cuando se solicite manualmente</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

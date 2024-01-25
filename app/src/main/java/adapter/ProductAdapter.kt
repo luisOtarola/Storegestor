@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import cl.litegames.R
 import data.model.Producto
-import java.util.Locale
-
-
-@Suppress("DEPRECATION")
+class ProductAdapter()
+/*
 class ProductAdapter(
     context: Context,
     resource: Int,
@@ -31,7 +28,7 @@ class ProductAdapter(
         if (listItemView == null) {
             val inflater =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            listItemView = inflater.inflate(R.layout.product_list, parent, false)
+            listItemView = inflater.inflate(R.layout.action_list, parent, false)
 
             holder = ViewHolder()
             holder.nombreTextView = listItemView.findViewById(R.id.textView_listView_nombre)
@@ -88,4 +85,4 @@ class ProductAdapter(
         lateinit var deleteIcon: ImageView
         lateinit var seeDetailIcon: ImageView
     }
-}
+}*/
