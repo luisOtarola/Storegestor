@@ -62,6 +62,7 @@
 
     <string name="title_activity_settings">SettingsActivity</string>
     <!-- Preference Titles -->
+    <string name="sort_order_title">Orden de clasificación</string>
     <string name="messages_header">Mensajes</string>
     <string name="sync_header">Sincronización</string>
 

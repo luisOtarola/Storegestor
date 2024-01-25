@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import data.ViewModel.ProductViewModel
 import data.model.Categoria
 import data.model.Producto
@@ -38,8 +40,6 @@ class InventoryActivity : AppCompatActivity() {
         PRICE_DESC,
         QUANTITY_ASC,
         QUANTITY_DESC,
-        CATEGORY_ASC,
-        CATEGORY_DESC
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +54,10 @@ class InventoryActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_inventory)
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
+
+        // SharedPreferences by save orderby
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sortOrder = SortOrder.valueOf(sharedPreferences.getString("sortOrder", SortOrder.NONE.name) ?: SortOrder.NONE.name)
 
         productAdapterMin = ProductAdapterMin(
             this,
@@ -86,7 +90,13 @@ class InventoryActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                buscarPorNombre(s.toString())
+                if (count > before) {
+                    // Se está escribiendo
+                    buscarPorNombre(s.toString())
+                } else {
+                    // Se está borrando
+                    buscarPorNombreAlBorrar(s.toString())
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -103,12 +113,30 @@ class InventoryActivity : AppCompatActivity() {
         }
     }
 
-
     private fun buscarPorNombre(nombre: String) {
         val filteredList = listaDeProductos.filter { it.nombre?.contains(nombre, true) == true }
         applySorting()
         productAdapterMin.actualizarLista(filteredList)
         productAdapterMin.notifyDataSetChanged()
+    }
+    private fun buscarPorNombreAlBorrar(nombre: String) {
+        if (nombre.isEmpty()) {
+            /*applySorting()
+            productAdapterMin.actualizarLista(listaDeProductos)
+            productAdapterMin.notifyDataSetChanged()*/
+
+            mProductViewModel.getAllData.observe(this) { productos ->
+                listaDeProductos.clear()
+                listaDeProductos.addAll(productos)
+                applySorting()
+                productAdapterMin.notifyDataSetChanged()
+            }
+        } else {
+            /*val filteredList = listaDeProductos.filter { it.nombre?.contains(nombre, true) == true }
+            applySorting()
+            productAdapterMin.actualizarLista(filteredList.reversed()) // Revertir la lista
+            productAdapterMin.notifyDataSetChanged()*/
+        }
     }
     private fun buscarPorCategoria(categoria: String) {
         val filteredList = listaDeProductos.filter { it.categoria.toString().equals(categoria, ignoreCase = true) }
@@ -160,6 +188,9 @@ class InventoryActivity : AppCompatActivity() {
                     showCategorySearchDialog()
                 } else {
                     applySorting()
+                    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+                    sharedPreferences.edit().putString("sortOrder", sortOrder.name).apply()
+                    Log.i("name_sort","el nombre que guarda es:"+sortOrder.name)
                 }
             }
 
@@ -188,8 +219,6 @@ class InventoryActivity : AppCompatActivity() {
             SortOrder.PRICE_DESC -> orderByPriceDesc()
             SortOrder.QUANTITY_ASC -> orderByQuantityAsc()
             SortOrder.QUANTITY_DESC -> orderByQuantityDesc()
-            SortOrder.CATEGORY_ASC -> orderByCategoryAsc()
-            SortOrder.CATEGORY_DESC -> orderByCategoryDesc()
             else -> {
                 // Handle NONE or any other cases if needed
             }

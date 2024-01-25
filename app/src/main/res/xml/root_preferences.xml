@@ -15,6 +15,15 @@
             app:title="@string/reply_title"
             app:useSimpleSummaryProvider="true" />
 
+        <!-- Añadido para la preferencia de ordenamiento -->
+        <ListPreference
+            app:key="sortOrder"
+            app:defaultValue="default_value"
+            app:entries="@array/sort_order_entries"
+            app:entryValues="@array/sort_order_values"
+            app:title="@string/sort_order_title"
+            app:useSimpleSummaryProvider="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/sync_header">
