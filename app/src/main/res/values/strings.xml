@@ -19,6 +19,8 @@
     <string name="text_toolbar_search">Buscar</string>
     <string name="text_toolbar_orderBy">Ordenar</string>
 
+    <string name="select_category">Selecciona una categoría</string>
+
     <!-- About Titles -->
     <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería
         en desarrollo de videojuegos y realidad virtual. \n\n

@@ -18,6 +18,11 @@ class ProductAdapterMin (
     private val detailClickListener: (Int) -> Unit
 ) : ArrayAdapter<Producto>(context, resource, products) {
 
+    fun actualizarLista(nuevaLista: List<Producto>) {
+        clear()
+        addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
     override fun getView(pos: Int, convertView: View?, parent: ViewGroup): View {
 
         var listItemView = convertView

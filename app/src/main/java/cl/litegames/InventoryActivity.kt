@@ -1,11 +1,12 @@
 package cl.litegames
 
-import adapter.ProductAdapter
 import adapter.ProductAdapterMin
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
+import android.text.TextWatcher
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -21,37 +22,46 @@ class InventoryActivity : AppCompatActivity() {
     private lateinit var backButton: ImageView
     private lateinit var createProductButton: Button
     private lateinit var productList: ListView
-    private lateinit var productAdapter: ProductAdapter
-
     private lateinit var productAdapterMin: ProductAdapterMin
-
-    // Var interfaz y DB
+    private lateinit var editTextSearch: EditText
     private lateinit var mProductViewModel: ProductViewModel
 
     private var listaDeProductos = mutableListOf<Producto>()
+
+    private var sortOrder = SortOrder.NONE
+
+    enum class SortOrder {
+        NONE,
+        NAME_ASC,
+        NAME_DESC,
+        PRICE_ASC,
+        PRICE_DESC,
+        QUANTITY_ASC,
+        QUANTITY_DESC,
+        CATEGORY_ASC,
+        CATEGORY_DESC
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
 
+        editTextSearch = findViewById(R.id.editTextSearch)
         backButton = findViewById(R.id.button_back_inventory)
         createProductButton = findViewById(R.id.create_product_inventory)
         productList = findViewById(R.id.listView_productList_Inventory)
 
-        //toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar_inventory)
-
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
 
-        // Inicializar el adaptador
         productAdapterMin = ProductAdapterMin(
             this,
             R.layout.custom_row,
             listaDeProductos,
             { position -> editarProducto(position) },
             { position -> eliminarProducto(position) },
-            { position -> verDetallesProducto(position) }  // Nuevo
+            { position -> verDetallesProducto(position) }
         )
         productList.adapter = productAdapterMin
 
@@ -63,39 +73,172 @@ class InventoryActivity : AppCompatActivity() {
             mostrarDialogoProducto()
         }
 
-        // Mi viewModel
         mProductViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
 
-        // Observar los cambios en la lista de productos y actualizar la interfaz de usuario
         mProductViewModel.getAllData.observe(this) { productos ->
             listaDeProductos.clear()
             listaDeProductos.addAll(productos)
+            applySorting()
             productAdapterMin.notifyDataSetChanged()
         }
+
+        editTextSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                buscarPorNombre(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        val refreshIcon = findViewById<ImageView>(R.id.refreshIcon)
+        refreshIcon.setOnClickListener {
+            mProductViewModel.getAllData.observe(this) { productos ->
+                listaDeProductos.clear()
+                listaDeProductos.addAll(productos)
+                applySorting()
+                productAdapterMin.notifyDataSetChanged()
+            }
+        }
     }
+
+
+    private fun buscarPorNombre(nombre: String) {
+        val filteredList = listaDeProductos.filter { it.nombre?.contains(nombre, true) == true }
+        applySorting()
+        productAdapterMin.actualizarLista(filteredList)
+        productAdapterMin.notifyDataSetChanged()
+    }
+    private fun buscarPorCategoria(categoria: String) {
+        val filteredList = listaDeProductos.filter { it.categoria.toString().equals(categoria, ignoreCase = true) }
+        applySorting()
+        productAdapterMin.actualizarLista(filteredList)
+        productAdapterMin.notifyDataSetChanged()
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_inventory, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
-            R.id.inventory_action_search->{
-                val Act = Intent(this, SearchProductActivity::class.java)
-                startActivity(Act)
+            R.id.inventory_action_search -> {
+                //val Act = Intent(this, SearchProductActivity::class.java)
+                //startActivity(Act)
+                showCategorySearchDialog()
                 return true
             }
-            R.id.inventory_action_orderBy->{
-                //val Act = Intent(this, AboutActivity::class.java)
-                //startActivity(Act)
+            R.id.inventory_action_orderBy -> {
+                showOrderByDialog()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
+    private fun showOrderByDialog() {
+        val orderOptions = arrayOf(
+            "Nombre Asc", "Nombre Desc",
+            "Precio Asc", "Precio Desc",
+            "Cantidad Asc", "Cantidad Desc",
+        )
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Ordenar por")
+            .setItems(orderOptions) { _, which ->
+                when (which) {
+                    0 -> sortOrder = SortOrder.NAME_ASC
+                    1 -> sortOrder = SortOrder.NAME_DESC
+                    2 -> sortOrder = SortOrder.PRICE_ASC
+                    3 -> sortOrder = SortOrder.PRICE_DESC
+                    4 -> sortOrder = SortOrder.QUANTITY_ASC
+                    5 -> sortOrder = SortOrder.QUANTITY_DESC
+                }
+
+                if (which in 6..7) {
+                    showCategorySearchDialog()
+                } else {
+                    applySorting()
+                }
+            }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showCategorySearchDialog() {
+        val categoriasArray = resources.getStringArray(R.array.categorias)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Seleccionar categoría")
+            .setItems(categoriasArray) { _, which ->
+                val selectedCategory = categoriasArray[which]
+                buscarPorCategoria(selectedCategory)
+            }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun applySorting() {
+        when (sortOrder) {
+            SortOrder.NAME_ASC -> orderByNameAsc()
+            SortOrder.NAME_DESC -> orderByNameDesc()
+            SortOrder.PRICE_ASC -> orderByPriceAsc()
+            SortOrder.PRICE_DESC -> orderByPriceDesc()
+            SortOrder.QUANTITY_ASC -> orderByQuantityAsc()
+            SortOrder.QUANTITY_DESC -> orderByQuantityDesc()
+            SortOrder.CATEGORY_ASC -> orderByCategoryAsc()
+            SortOrder.CATEGORY_DESC -> orderByCategoryDesc()
+            else -> {
+                // Handle NONE or any other cases if needed
+            }
+        }
+    }
+
+    private fun orderByNameAsc() {
+        listaDeProductos.sortBy { it.nombre }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByNameDesc() {
+        listaDeProductos.sortByDescending { it.nombre }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByPriceAsc() {
+        listaDeProductos.sortBy { it.precio }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByPriceDesc() {
+        listaDeProductos.sortByDescending { it.precio }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByQuantityAsc() {
+        listaDeProductos.sortBy { it.cantidad }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByQuantityDesc() {
+        listaDeProductos.sortByDescending { it.cantidad }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByCategoryAsc() {
+        listaDeProductos.sortBy { it.categoria.toString() }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
+    private fun orderByCategoryDesc() {
+        listaDeProductos.sortByDescending { it.categoria.toString() }
+        productAdapterMin.notifyDataSetChanged()
+    }
+
     private fun verDetallesProducto(position: Int) {
         val producto = listaDeProductos[position]
-
-        // Crea un Intent para abrir la actividad de detalles
         val intent = Intent(this, ProductDetailActivity::class.java)
-        // Pasa el ID del producto a mostrar detalles
         intent.putExtra("PRODUCT_ID", producto.id)
         startActivity(intent)
     }
@@ -107,42 +250,27 @@ class InventoryActivity : AppCompatActivity() {
 
     private fun editarProducto(position: Int) {
         val producto = listaDeProductos[position]
-
-        // Crea un Intent para abrir la actividad de edición
         val intent = Intent(this, EditProductActivity::class.java)
-        // Pasa el ID del producto a editar
         intent.putExtra("PRODUCT_ID", producto.id)
         startActivity(intent)
     }
 
     private fun mostrarDialogoProducto() {
-
         val builder = AlertDialog.Builder(this)
         val view = layoutInflater.inflate(R.layout.popup_product_inventory, null)
-
-        // Pasa la vista al builder
         builder.setView(view)
 
-        // Obtiene referencias a los EditText y al Spinner
         val editTextNombre = view.findViewById<EditText>(R.id.editTextNombre_inventory)
         val editTextPrecio = view.findViewById<EditText>(R.id.editTextPrecio_inventory)
         val editTextCantidad = view.findViewById<EditText>(R.id.editTextCantidad_inventory)
         val editTextDescripcion = view.findViewById<EditText>(R.id.editTextDescripcion_inventory)
         val spinnerCategoria = view.findViewById<Spinner>(R.id.spinnerCategoria_inventory)
 
-        // Obtiene el array de categorías desde resources
         val categoriasArray = resources.getStringArray(R.array.categorias)
-
-        // Crea un ArrayAdapter utilizando el array y el diseño por defecto del Spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoriasArray)
-
-        // Especifica el diseño a utilizar cuando se despliega el Spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Asigna el adaptador al Spinner
         spinnerCategoria.adapter = adapter
 
-        // Agrega botones "Aceptar" y "Cancelar"
         builder.setPositiveButton("Aceptar") { _, _ ->
             val nombre = editTextNombre.text.toString()
             val precio = editTextPrecio.text.toString().toIntOrNull() ?: 0
@@ -150,29 +278,23 @@ class InventoryActivity : AppCompatActivity() {
             val descripcion = editTextDescripcion.text.toString()
             val categoria = spinnerCategoria.selectedItem.toString()
 
-            if(inputCheck(nombre,precio,cantidad,descripcion)){
-                val producto = Producto(0,nombre,precio,cantidad,descripcion, Categoria.valueOf(categoria))
+            if (inputCheck(nombre, precio, cantidad, descripcion)) {
+                val producto = Producto(0, nombre, precio, cantidad, descripcion, Categoria.valueOf(categoria))
                 mProductViewModel.addProduct(producto)
-                Toast.makeText(this,"Successfully added!", Toast.LENGTH_LONG).show()
-            }
-            else{
-                Toast.makeText(this,"Please fill out all fields!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Successfully added!", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Please fill out all fields!", Toast.LENGTH_LONG).show()
             }
 
-            // Notifica al adaptador
             productAdapterMin.notifyDataSetChanged()
         }
-        // Configurar un botón de "Cancelar"
+
         builder.setNegativeButton("Cancelar") { dialog, _ ->
-            dialog.dismiss() // Cierra el cuadro de diálogo
+            dialog.dismiss()
         }
 
-        // Muestra el cuadro de diálogo
         val dialog = builder.create()
-
-        // Configurar la atenuación del fondo detrás del diálogo
         dialog.window?.setDimAmount(0.5f)
-
         dialog.show()
     }
 
@@ -183,9 +305,5 @@ class InventoryActivity : AppCompatActivity() {
         descripcion: String
     ): Boolean {
         return !(TextUtils.isEmpty(nombre) || precio <= 0 || cantidad <= 0 || TextUtils.isEmpty(descripcion))
-    }
-
-    private fun mostrarToast(mensaje: String) {
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
 }

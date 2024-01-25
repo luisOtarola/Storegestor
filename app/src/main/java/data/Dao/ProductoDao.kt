@@ -16,6 +16,8 @@ interface ProductoDao {
     fun getAllData(): LiveData<List<Producto>>
     @Query("SELECT * FROM productos WHERE id = :productId")
     fun getProductById(productId: Int): LiveData<Producto?>
+    @Query("SELECT * FROM productos ORDER BY id ASC")
+    fun getAllDataDirect(): List<Producto>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(vararg productos: Producto)
