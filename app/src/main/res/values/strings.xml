@@ -1,13 +1,19 @@
 <resources>
-    <string name="app_name">Store gestor</string>
+    <string name="app_name">Store Gestor</string>
 
     <!-- Home Titles -->
     <string name="title_main">COMPRA Y GUARDA</string>
-    <string name="text_shopping_button">Lista de compra</string>
+    <string name="text_shopping_button">Lista de compras</string>
     <string name="text_inventory_button">Mis productos</string>
     <string name="text_places_interest_button">Lugares de interés</string>
-    <string name="text_total_Pay">Total productos:</string>
-    <string name="text_total_Pay_number">17.500</string>
+    <string name="text_total_Pay">Total de productos:</string>
+    <string name="text_total_Pay_number">17,500</string>
+
+    <!-- Inventory Titles -->
+    <string name="text_linearL_amount">Cantidad</string>
+    <string name="text_linearL_product">Producto</string>
+    <string name="text_linearL_price">Precio</string>
+    <string name="editText_name_search">Buscar por nombre</string>
 
     <!-- Toolbar menu Titles -->
     <string name="text_toolbar_actionList">Lista de acciones</string>
@@ -20,11 +26,15 @@
     <string name="text_toolbar_orderBy">Ordenar</string>
     <string name="select_category">Selecciona una categoría</string>
 
+    <!-- Edit product Titles -->
+    <string name="editTextProductName_hint">Nombre del producto</string>
+    <string name="editTextProductPrice_hint">Precio</string>
+    <string name="editTextProductQuantity_hint">Cantidad</string>
+    <string name="editTextProductDescription_hint">Descripción</string>
+    <string name="buttonText_buttonSaveEdit">Guardar</string>
+
     <!-- About Titles -->
-    <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería
-        en desarrollo de videojuegos y realidad virtual. \n\n
-        Luis Otarola\n\n\n
-    </string>
+    <string name="text_about">Este proyecto fue creado por el estudiante de ingeniería en desarrollo de videojuegos y realidad virtual.\n\nLuis Otarola</string>
 
     <!-- Action Titles -->
     <string name="title_activity_actionList">Historial de movimientos</string>
@@ -32,6 +42,13 @@
     <!-- ButtonAdd Titles -->
     <string name="text_button_add_product">Añadir producto</string>
     <string name="text_button_add_place">Añadir lugar de interés</string>
+
+    <!-- Custom_Row.xml Titles -->
+    <string name="icon2_descriptionEdit">Editar</string>
+    <string name="icon2_descriptionDelete">Eliminar</string>
+    <string name="icon2_descriptionSeeDetail">Mostrar detalles</string>
+    <string name="text_cantidad_customRow">C</string>
+    <string name="text_precio_customRow">2000</string>
 
     <!-- Popup product Titles -->
     <string name="text_popup_name">Nombre del Producto</string>
@@ -55,7 +72,6 @@
     <string name="wordNameProduct">Nombre del producto</string>
     <string name="wordAction">Acción realizada</string>
 
-
     <!-- Details product Titles -->
     <string name="detail_name">Nombre: Nombre del Producto</string>
     <string name="detail_price">Precio: $100.00</string>
@@ -68,13 +84,19 @@
     <string name="text_editProduct_title">Edición del Producto</string>
 
     <!-- Setting Titles -->
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Configuración</string>
 
     <!-- Preference Titles -->
     <string name="sort_order_title">Orden de clasificación</string>
     <string name="messages_header">Ajustes</string>
 
+    <!-- DB Preference Titles -->
+    <string name="pref_category_database">Base de datos</string>
+    <string name="pref_clear_database_key">clear_database</string>
+    <string name="pref_clear_database_title">Borrar Base de datos</string>
+    <string name="pref_clear_database_summary">Borrar todos los datos de la base de datos</string>
+
     <!-- Messages Preferences -->
-    <string name="signature_title">Nombre Usuario</string>
+    <string name="signature_title">Nombre de usuario</string>
 
 </resources>

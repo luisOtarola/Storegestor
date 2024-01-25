@@ -15,12 +15,6 @@ class ActionAdapter(
     products: List<Action>,
 ) : ArrayAdapter<Action>(context, resource, products) {
 
-    fun actualizarLista(nuevaLista: List<Action>) {
-        clear()
-        addAll(nuevaLista)
-        notifyDataSetChanged()
-    }
-
     override fun getView(pos: Int, convertView: View?, parent: ViewGroup): View {
 
         var listItemView = convertView

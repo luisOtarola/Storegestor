@@ -84,7 +84,7 @@ class EditProductActivity : AppCompatActivity() {
             mProductViewModel.getProductById(productId.toInt()).observe(this) { currentProduct ->
                 currentProduct?.let {
                     // Obtener la categoría actual del producto antes de la actualización
-                    val currentCategoria = it.categoria ?: Categoria.DEFAULT
+                    val currentCategoria = it.categoria
 
                     // Utilizamos Categoria.DEFAULT directamente como enum
                     val editedProduct = Producto(productId, it.nombre, precio, cantidad, it.descripcion, currentCategoria)

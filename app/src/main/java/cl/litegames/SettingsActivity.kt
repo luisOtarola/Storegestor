@@ -2,9 +2,12 @@ package cl.litegames
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import data.ViewModel.ProductViewModel
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -33,6 +36,19 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+        }
+        override fun onPreferenceTreeClick(preference: Preference): Boolean {
+            when (preference?.key) {
+                "clear_database" -> {
+                    clearDatabase()
+                    return true
+                }
+            }
+            return super.onPreferenceTreeClick(preference)
+        }
+        private fun clearDatabase() {
+            val productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+            //productViewModel.clearAllData()
         }
     }
 }

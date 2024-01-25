@@ -48,27 +48,27 @@
             android:id="@+id/editTextProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del producto" />
+            android:hint="@string/editTextProductName_hint" />
 
         <EditText
             android:id="@+id/editTextProductPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Precio"
+            android:hint="@string/editTextProductPrice_hint"
             android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/editTextProductQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cantidad"
+            android:hint="@string/editTextProductQuantity_hint"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/editTextProductDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción" />
+            android:hint="@string/editTextProductDescription_hint" />
 
         <Button
             android:id="@+id/buttonSaveEdit"
@@ -77,6 +77,6 @@
             android:padding="15dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/square_button_cian"
-            android:text="Guardar" />
+            android:text="@string/buttonText_buttonSaveEdit" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

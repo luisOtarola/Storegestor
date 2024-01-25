@@ -42,7 +42,7 @@
             android:id="@+id/seeDetailIcon2"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:contentDescription="Eliminar"
+            android:contentDescription="Mostrar detalles"
             android:src="@drawable/ic_seedetail" />
     </LinearLayout>
 
@@ -53,7 +53,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="24dp"
         android:layout_marginTop="20dp"
-        android:text="1"
+        android:text="@string/text_cantidad_customRow"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="2000"
+        android:text="@string/text_precio_customRow"
         android:textColor="@color/amarillo"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -94,3 +94,5 @@
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

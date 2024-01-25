@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import data.model.Action
 import data.model.Producto
 
 @Dao
@@ -27,4 +28,6 @@ interface ProductoDao {
 
     @Delete
     fun delete(producto: Producto)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAction(action: Action)
 }
