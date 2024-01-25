@@ -23,12 +23,12 @@
         android:id="@+id/editTextSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:hint="Buscar por nombre"
+        app:layout_constraintBottom_toTopOf="@+id/create_product_inventory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView_productList_Inventory" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_inventory"
@@ -120,12 +120,15 @@
 
     <ListView
         android:id="@+id/listView_productList_Inventory"
-        android:layout_width="371dp"
-        android:layout_height="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="130dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayou_encabezado" />
@@ -142,6 +145,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
